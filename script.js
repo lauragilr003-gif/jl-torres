@@ -1,27 +1,7 @@
-const power = document.getElementById('btn-power');
-const perilla = document.getElementById('perilla');
-const aguja = document.getElementById('aguja-roja');
-const mhzDisp = document.getElementById('mhz');
-
-const audioEstatica = document.getElementById('snd-estatica');
-const audioCambio = document.getElementById('snd-cambio');
-const audioFinal = document.getElementById('snd-final');
-
-let encendido = false;
-
-// Al hacer clic, forzamos la carga para evitar el bloqueo de Mac/Safari
-power.addEventListener('click', () => {
-    encendido = !encendido;
-    power.classList.toggle('on');
-    document.querySelector('.label').innerText = encendido ? "ON" : "OFF";
-    
-    if (encendido) {
-        audioEstatica.load(); // Forzar carga
-        audioEstatica.play().catch(err => alert("Error: No se encontró el audio 'estatica.mp3'"));
-    } else {
-        [audioEstatica, audioCambio, audioFinal].forEach(a => { a.pause(); a.currentTime = 0; });
-    }
-});
+// Configuramos volúmenes iniciales (0.0 a 1.0)
+audioEstatica.volume = 0.15; // Muy suave de fondo
+audioCambio.volume = 0.9;   // Fuerte para que se note el movimiento
+audioFinal.volume = 1.0;    // El volumen máximo para tu historia
 
 perilla.addEventListener('input', () => {
     if (!encendido) return;
@@ -30,16 +10,26 @@ perilla.addEventListener('input', () => {
     let mhz = (88.0 + (val * 0.2)).toFixed(1);
     mhzDisp.innerText = mhz;
     
-    // Movimiento aguja: aseguramos que el estilo se aplique
+    // Movimiento de la aguja
     aguja.style.left = (45.4 + (val * 0.33)) + "%";
 
-    if (audioCambio.paused) audioCambio.play();
+    // EFECTO DE CAMBIO DE EMISORA
+    // Cada vez que mueves el dial, reiniciamos el sonido de sintonía
+    // Esto hace que si mueves rápido, se sienta que pasas por muchas emisoras
+    audioCambio.currentTime = 0; 
+    audioCambio.play();
 
+    // Lógica de sintonía final
     if (parseFloat(mhz) === 99.8) {
         audioEstatica.pause();
+        audioCambio.pause();
         audioFinal.play();
     } else {
-        if (!audioFinal.paused) { audioFinal.pause(); audioFinal.currentTime = 0; }
+        // Si no estamos en la frecuencia, vuelve la estática suave
+        if (!audioFinal.paused) { 
+            audioFinal.pause(); 
+            audioFinal.currentTime = 0; 
+        }
         if (audioEstatica.paused) audioEstatica.play();
     }
 });

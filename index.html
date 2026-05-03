@@ -2,40 +2,40 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expediente JL Torres</title>
+    <title>Expediente JL Torres - Radio Antigua</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="radio-digital">
-        <div class="pantalla">
-            <div class="frecuencia"><span id="mhz">88.0</span> MHz</div>
-            <div class="label-caso">CASO: JL TORRES</div>
-            <div class="dial-visual">
-                <!-- La aguja ahora vive dentro de este contenedor -->
-                <div id="aguja-roja"></div>
+    <div class="radio-vintage">
+        <!-- CUADRO DE NÚMERO AMPLIO -->
+        <div class="display-frecuencia">
+            <div class="visor">
+                <span id="mhz">88.0</span>
             </div>
+            <div class="unidad">MHz</div>
         </div>
 
-        <div class="controles">
-            <div id="btn-power" class="boton-power">
-                <div class="led"></div>
+        <div class="dial-analogico">
+            <img src="https://i.postimg.cc/yxZP1pcN/istockphoto-638856258-612x612.jpg" class="fondo-radio">
+            <div id="aguja-roja"></div>
+        </div>
+
+        <div class="interfaz-inferior">
+            <div id="btn-power" class="switch-madera">
+                <div class="palanca"></div>
                 <span>POWER</span>
             </div>
-            
-            <div class="slider-container">
+
+            <!-- EL KNOB (Perilla giratoria) -->
+            <div class="knob-container">
+                <div class="knob-label">SINTONÍA</div>
                 <input type="range" min="0" max="100" value="0" id="perilla">
-                <div class="rango-labels">
-                    <span>88.0</span>
-                    <span>99.8</span>
-                    <span>108.0</span>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- AUDIOS: Asegúrate que el nombre en GitHub sea exacto -->
+    <audio id="snd-estatica" loop src="estatica.mp3"></audio>
     <audio id="snd-cambio" src="sintonía.mp3"></audio>
     <audio id="snd-final" src="audio-final.mp3"></audio>
 

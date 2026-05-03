@@ -2,39 +2,52 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Expediente JL Torres - Radio Antigua</title>
+    <title>Expediente JL Torres - Archivo de Audio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="radio-vintage">
-        <!-- CUADRO DE NÚMERO AMPLIO -->
-        <div class="display-frecuencia">
-            <div class="visor">
-                <span id="mhz">88.0</span>
-            </div>
-            <div class="unidad">MHz</div>
-        </div>
-
-        <div class="dial-analogico">
-            <img src="https://i.postimg.cc/yxZP1pcN/istockphoto-638856258-612x612.jpg" class="fondo-radio">
-            <div id="aguja-roja"></div>
-        </div>
-
-        <div class="interfaz-inferior">
-            <div id="btn-power" class="switch-madera">
-                <div class="palanca"></div>
-                <span>POWER</span>
+    <div class="mueble-radio">
+        <div class="panel-frontal">
+            
+            <!-- DISPLAY DE FRECUENCIA -->
+            <div class="seccion-display">
+                <div class="visor-digital">
+                    <span id="mhz">88.0</span>
+                </div>
+                <div class="marca-radio">MODELO JLT-1926</div>
             </div>
 
-            <!-- EL KNOB (Perilla giratoria) -->
-            <div class="knob-container">
-                <div class="knob-label">SINTONÍA</div>
-                <input type="range" min="0" max="100" value="0" id="perilla">
+            <!-- DIAL VISUAL (CON AGUJA) -->
+            <div class="seccion-dial">
+                <img src="https://i.postimg.cc/yxZP1pcN/istockphoto-638856258-612x612.jpg" class="img-dial">
+                <div id="aguja-roja"></div>
+            </div>
+
+            <!-- CONTROLES INFERIORES -->
+            <div class="seccion-controles">
+                
+                <!-- PALANCA DE PODER -->
+                <div id="btn-power" class="toggle-switch">
+                    <div class="base-metal">
+                        <div class="palanca-fisica"></div>
+                    </div>
+                    <span class="estado-texto">OFF</span>
+                </div>
+
+                <!-- SLIDER VERTICAL (SINTONIZADOR) -->
+                <div class="control-sintonia">
+                    <div class="fader-track">
+                        <input type="range" min="0" max="100" value="0" id="perilla" orient="vertical">
+                    </div>
+                    <div class="label-fader">SINTONÍA</div>
+                </div>
+
             </div>
         </div>
     </div>
 
+    <!-- AUDIOS -->
     <audio id="snd-estatica" loop src="estatica.mp3"></audio>
     <audio id="snd-cambio" src="sintonía.mp3"></audio>
     <audio id="snd-final" src="audio-final.mp3"></audio>

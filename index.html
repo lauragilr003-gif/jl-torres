@@ -10,6 +10,7 @@
         <div class="panel-frontal">
             <div class="seccion-display">
                 <div class="visor-digital"><span id="mhz">88.0</span></div>
+                <div class="unidad">MHz</div>
             </div>
             
             <div class="seccion-dial">
@@ -24,16 +25,13 @@
                 </div>
                 
                 <div class="control-sintonia">
-                    <div class="fader-vertical">
-                        <input type="range" min="0" max="100" value="0" id="perilla">
-                    </div>
+                    <input type="range" min="0" max="100" value="0" id="perilla" class="slider-vertical">
                     <div class="label-fader">SINTONÍA</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- NOTA: Renombra tus archivos en GitHub para que no tengan tildes -->
     <audio id="snd-estatica" loop src="estatica.mp3"></audio>
     <audio id="snd-cambio" src="sintonia.mp3"></audio>
     <audio id="snd-final" src="audio-final.mp3"></audio>

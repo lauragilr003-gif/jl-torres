@@ -1,36 +1,42 @@
-<div class="interfaz-arg">
-  
-  <!-- INTERRUPTOR DE METAL OXIDADO -->
-  <div class="seccion-energia">
-    <div id="radio-power" class="toggle-antiguo">
-      <div class="placa-metal">
-        <div class="tornillo tr"></div>
-        <div class="tornillo tl"></div>
-        <div class="tornillo br"></div>
-        <div class="tornillo bl"></div>
-        <div class="palanca-fisica"></div>
-      </div>
-      <span class="estado-txt">OFF</span>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Interactiva - Proyecto Cine</title>
+    <!-- Esto le dice a la página que use tu diseño -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="interfaz">
+        <!-- BOTÓN OXIDADO -->
+        <div id="btn-power" class="switch-antiguo">
+            <div class="placa-metal">
+                <div class="tornillo tr"></div>
+                <div class="tornillo tl"></div>
+                <div class="palanca"></div>
+            </div>
+            <span class="label">OFF</span>
+        </div>
+
+        <div class="radio-contenedor">
+            <img src="https://i.postimg.cc/yxZP1pcN/istockphoto-638856258-612x612.jpg" class="fondo-radio">
+            <div id="aguja-roja"></div>
+        </div>
+
+        <div class="dial-control">
+            <input type="range" min="0" max="100" value="0" id="perilla">
+            <div class="frecuencia"><span id="mhz">88.0</span> MHz</div>
+        </div>
     </div>
-  </div>
 
-  <div class="radio-pantalla-completa">
-    <img src="https://i.postimg.cc/yxZP1pcN/istockphoto-638856258-612x612.jpg" class="radio-img">
-    <div id="aguja-roja"></div>
-  </div>
+    <!-- AQUÍ INDICAMOS LOS AUDIOS (Asegúrate que el nombre coincida con lo que subiste) -->
+    <audio id="snd-estatica" loop src="estatica.mp3"></audio>
+    <audio id="snd-cambio" src="sintonia.mp3"></audio>
+    <audio id="snd-final" src="audio-final.mp3"></audio>
 
-  <div class="consola-inferior">
-    <div class="carril-interruptor">
-      <input type="range" min="0" max="100" value="0" id="control-fisico">
-    </div>
-    <div class="frecuencia-digital">
-      <span id="valor-freq">88.0</span> MHz
-    </div>
-  </div>
-
-</div>
-
-<!-- AUDIOS (Asegúrate de que los links funcionen) -->
-<audio id="estatica-fondo" preload="auto" loop src="https://drive.google.com/uc?export=download&id=1LHPfx6wYmkRKaRt86It0DWoosqUqoQzy"></audio>
-<audio id="sonido-cambio" preload="auto" src="https://drive.google.com/file/d/1iVZeCnvHBox6bGg2fw_LkcL2TETVoHyP/view?usp=sharing"></audio>
-<audio id="audio-final" preload="auto" src="URL_TU_AUDIO_FINAL_AQUI"></audio>
+    <!-- Esto activa la lógica del radio -->
+    <script src="script.js"></script>
+</body>
+</html>
